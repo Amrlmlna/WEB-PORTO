@@ -57,7 +57,7 @@ function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
         const scrollVelocity = scrollDelta / timeDelta;
         
         // Apply acceleration based on scroll velocity, capped for control
-        acceleration = 1 + Math.min(Math.abs(scrollVelocity) * 2, 1);
+        acceleration = 1 + Math.min(Math.abs(scrollVelocity) * 0.05, 1);
     }
     
     let moveBy = baseVelocity * (timeDelta / 1000);
@@ -96,7 +96,7 @@ export function ParallaxProjects() {
     <section
       id="projects"
       ref={containerRef}
-      className="py-20 md:py-32 bg-secondary/20 overflow-x-hidden"
+      className="h-full w-full flex flex-col justify-center bg-secondary/20 overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="font-headline text-4xl md:text-5xl font-bold text-center">
