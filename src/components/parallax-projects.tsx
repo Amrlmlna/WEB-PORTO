@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   motion,
   useScroll,
@@ -33,22 +33,20 @@ function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
     damping: 50,
     stiffness: 400
   });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
+
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 1], {
     clamp: false
   });
 
   const x = useTransform(baseX, (v) => `${wrapRange(-20, -45, v)}%`);
 
   useAnimationFrame((t, delta) => {
-    let effectiveVelocity = baseVelocity;
+    let moveBy = baseVelocity * (delta / 1000);
 
     if (isInView) {
-        // Add a bonus to velocity based on scrolling, maintaining the original direction
         const scrollBonus = Math.sign(baseVelocity) * Math.abs(velocityFactor.get());
-        effectiveVelocity += scrollBonus;
+        moveBy += scrollBonus * (delta / 1000);
     }
-
-    const moveBy = effectiveVelocity * (delta / 1000);
     
     baseX.set(baseX.get() + moveBy);
   });
