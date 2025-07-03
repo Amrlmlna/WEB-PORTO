@@ -1,27 +1,16 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { projects } from "@/lib/projects";
 import { ProjectCard } from "./project-card";
 
 export function ParallaxProjects() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
   // To create a seamless looping effect, we can duplicate the projects
   const firstRow = [...projects.slice(0, 3), ...projects.slice(0, 3)];
   const secondRow = [...projects.slice(3, 6), ...projects.slice(3, 6)];
 
-  const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-  const x2 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
   return (
     <section
-      ref={ref}
       id="projects"
       className="py-20 md:py-32 bg-secondary/20 overflow-x-hidden"
     >
@@ -34,14 +23,32 @@ export function ParallaxProjects() {
         </p>
       </div>
       <div className="mt-16 flex flex-col gap-8">
-        <motion.div style={{ x: x1 }} className="flex gap-8 -translate-x-1/4">
+        <motion.div
+          className="flex gap-8"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            duration: 50,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear",
+          }}
+        >
           {firstRow.map((project, index) => (
             <div key={`${project.slug}-1-${index}`} className="w-[350px] md:w-[400px] flex-shrink-0">
               <ProjectCard project={project} />
             </div>
           ))}
         </motion.div>
-        <motion.div style={{ x: x2 }} className="flex gap-8 -translate-x-1/4">
+        <motion.div
+          className="flex gap-8"
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{
+            duration: 50,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear",
+          }}
+        >
           {secondRow.map((project, index) => (
             <div key={`${project.slug}-2-${index}`} className="w-[350px] md:w-[400px] flex-shrink-0">
               <ProjectCard project={project} />
