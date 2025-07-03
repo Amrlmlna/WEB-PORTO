@@ -7,6 +7,7 @@ import * as THREE from 'three';
 const ThreeCanvas = () => {
   const mountRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
+  const clock = useRef(new THREE.Clock());
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -78,8 +79,8 @@ const ThreeCanvas = () => {
     // Earrings
     const earringGeometry = new THREE.TorusGeometry(0.08, 0.02, 16, 100);
     const earringMaterial = new THREE.MeshStandardMaterial({
-        color: 0xd4d4d4,
-        metalness: 0.9,
+        color: 0xffd700,
+        metalness: 0.8,
         roughness: 0.2
     });
     const leftEarring = new THREE.Mesh(earringGeometry, earringMaterial);
@@ -100,6 +101,10 @@ const ThreeCanvas = () => {
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
+      const elapsedTime = clock.current.getElapsedTime();
+
+      // Floating animation
+      character.position.y = 0.2 + Math.sin(elapsedTime * 1.5) * 0.05;
 
       // Mouse move animations
       const targetZ = 3 - mouse.current.y * 0.5;

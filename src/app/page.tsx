@@ -6,7 +6,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import ThreeCanvas from '@/components/three-canvas';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Code, PenTool, Database, Briefcase, Award, GraduationCap } from 'lucide-react';
+import { Award, Briefcase, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 import { ParallaxProjects } from '@/components/parallax-projects';
 import LanyardCanvas from '@/components/lanyard-canvas';
@@ -243,20 +243,20 @@ export default function Home() {
     offset: ['start start', 'end end'],
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.33], [1, 0.8]);
-  const heroOpacity = useTransform(scrollYProgress, [0.25, 0.33], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.25], [1, 0.8]);
+  const heroOpacity = useTransform(scrollYProgress, [0.2, 0.25], [1, 0]);
 
-  const projectsScale = useTransform(scrollYProgress, [0.3, 0.33, 0.63, 0.66], [0.9, 1, 1, 0.9]);
-  const projectsOpacity = useTransform(scrollYProgress, [0.3, 0.33, 0.63, 0.66], [0, 1, 1, 0]);
+  const projectsScale = useTransform(scrollYProgress, [0.22, 0.25, 0.47, 0.5], [0.9, 1, 1, 0.9]);
+  const projectsOpacity = useTransform(scrollYProgress, [0.22, 0.25, 0.47, 0.5], [0, 1, 1, 0]);
 
-  const aboutScale = useTransform(scrollYProgress, [0.63, 0.66, 1], [0.9, 1, 1]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66, 1], [0, 1, 1]);
+  const aboutScale = useTransform(scrollYProgress, [0.47, 0.5, 0.72, 0.75], [0.9, 1, 1, 0.8]);
+  const aboutOpacity = useTransform(scrollYProgress, [0.47, 0.5, 0.72, 0.75], [0, 1, 1, 0]);
 
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main ref={mainRef} className="relative h-[300vh]">
+      <main ref={mainRef} className="relative h-[400vh]">
           {/* Hero Section */}
           <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="h-screen w-full sticky top-0">
             <HeroSection />

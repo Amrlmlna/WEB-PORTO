@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as THREE from 'three'
@@ -11,7 +12,7 @@ extend({ MeshLineGeometry, MeshLineMaterial })
 
 export default function LanyardCanvas() {
   return (
-    <div className="w-full h-full min-h-[400px] md:min-h-[600px]" data-ai-hint="id card physics">
+    <div className="w-full h-full min-h-[400px] md:min-h-[600px]" data-ai-hint="id card">
       <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
         <ambientLight intensity={Math.PI / 2} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
