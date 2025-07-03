@@ -34,12 +34,12 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div className="relative z-10 text-center md:text-left">
+            <div className="grid grid-cols-1 items-center justify-items-center gap-16">
+              <div className="relative z-0 col-start-1 row-start-1 text-center">
                 <h1 className="font-headline text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground">
                   HI, I'M AMIRUL
                 </h1>
-                <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
+                <p className="mt-4 max-w-md mx-auto text-lg text-muted-foreground">
                   A 3D DESIGNER PASSIONATE ABOUT CRAFTING BOLD AND MEMORABLE PROJECTS.
                 </p>
                 <div className="mt-8">
@@ -50,7 +50,7 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="relative h-[400px] w-full md:h-[600px]">
+              <div className="relative z-10 col-start-1 row-start-1 h-[400px] w-full md:h-[600px]">
                 <ThreeCanvas />
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function Home() {
                           </div>
                           <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
                           {event.type === 'certification' && event.certificateImage && (
-                            <div className="absolute bottom-full left-0 mb-4 w-80 p-2 bg-background border rounded-lg shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-10 hidden md:block group-hover:opacity-100">
+                            <div className="absolute bottom-full left-0 mb-4 w-80 p-2 bg-background border rounded-lg shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-10 block group-hover:opacity-100">
                                 <Image
                                     src={event.certificateImage}
                                     alt={`${event.title} certificate`}
