@@ -32,28 +32,37 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center justify-items-center gap-16">
-              <div className="relative z-0 col-start-1 row-start-1 text-center">
-                <h1 className="font-headline text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground">
-                  HI, I'M AMIRUL
-                </h1>
-                <p className="mt-4 max-w-md mx-auto text-lg text-muted-foreground">
-                  A 3D DESIGNER PASSIONATE ABOUT CRAFTING BOLD AND MEMORABLE PROJECTS.
-                </p>
-                <div className="mt-8">
-                  <Link href="#contact" passHref>
-                    <Button size="lg" className="font-bold text-base bg-gradient-to-r from-purple-500 to-pink-500 text-primary-foreground hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 rounded-full">
-                      CONTACT ME
-                    </Button>
-                  </Link>
-                </div>
+              <div className="grid grid-cols-1 items-center justify-items-center">
+                  
+                  <div className="relative z-10 col-start-1 row-start-1 flex flex-col items-center text-center pointer-events-none">
+                      <h1 className="font-headline text-[15vw] md:text-[18vw] lg:text-[20vw] font-black tracking-tighter text-foreground/90 leading-none">
+                          HI, I'M<br />AMIRUL
+                      </h1>
+                  </div>
+
+                  <div className="relative z-30 col-start-1 row-start-1 w-full flex justify-between items-end">
+                      <div className="text-left pointer-events-auto">
+                          <p className="max-w-[200px] text-lg text-muted-foreground">
+                              A 3D DESIGNER PASSIONATE ABOUT CRAFTING BOLD AND MEMORABLE PROJECTS.
+                          </p>
+                      </div>
+                      <div className="pointer-events-auto">
+                          <Link href="#contact" passHref>
+                              <Button size="lg" className="font-bold text-base bg-gradient-to-r from-purple-500 to-pink-500 text-primary-foreground hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 rounded-full">
+                                  CONTACT ME
+                              </Button>
+                          </Link>
+                      </div>
+                  </div>
+
+                  <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                    <div className="relative h-[80vh] w-[80vh]">
+                      <ThreeCanvas />
+                    </div>
+                  </div>
               </div>
-              <div className="relative z-10 col-start-1 row-start-1 h-[400px] w-full md:h-[600px]">
-                <ThreeCanvas />
-              </div>
-            </div>
           </div>
         </section>
 
@@ -88,7 +97,7 @@ export default function Home() {
                           </div>
                           <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
                           {event.type === 'certification' && event.certificateImage && (
-                            <div className="absolute bottom-full left-0 mb-4 w-80 p-2 bg-background border rounded-lg shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-10 block group-hover:opacity-100">
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-80 p-2 bg-background border rounded-lg shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-10 block group-hover:opacity-100">
                                 <Image
                                     src={event.certificateImage}
                                     alt={`${event.title} certificate`}

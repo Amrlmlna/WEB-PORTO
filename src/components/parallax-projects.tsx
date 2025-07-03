@@ -8,7 +8,8 @@ import {
   useTransform,
   useMotionValue,
   useVelocity,
-  useAnimationFrame
+  useAnimationFrame,
+  useInView,
 } from "framer-motion";
 import { projects } from "@/lib/projects";
 import { ProjectCard } from "./project-card";
@@ -21,9 +22,10 @@ const wrapRange = (min: number, max: number, value: number) => {
 interface ParallaxRowProps {
   children: React.ReactNode;
   baseVelocity: number;
+  isInView: boolean;
 }
 
-function ParallaxRow({ children, baseVelocity }: ParallaxRowProps) {
+function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -45,7 +47,9 @@ function ParallaxRow({ children, baseVelocity }: ParallaxRowProps) {
       directionFactor.current = velocityFactor.get() > 0 ? -1 : 1;
     }
     
-    moveBy += directionFactor.current * velocityFactor.get() * 2;
+    if (isInView) {
+        moveBy += directionFactor.current * velocityFactor.get() * 0.5;
+    }
 
     baseX.set(baseX.get() + moveBy);
   });
@@ -66,9 +70,13 @@ export function ParallaxProjects() {
   const firstRow = projects.slice(0, 3);
   const secondRow = projects.slice(3, 6);
 
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, margin: "0px 0px -15% 0px" });
+
   return (
     <section
       id="projects"
+      ref={containerRef}
       className="py-20 md:py-32 bg-secondary/20 overflow-x-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,14 +88,14 @@ export function ParallaxProjects() {
         </p>
       </div>
       <div className="mt-16 flex flex-col gap-8">
-        <ParallaxRow baseVelocity={-20}>
+        <ParallaxRow baseVelocity={-2} isInView={isInView}>
             {firstRow.map((project, index) => (
                 <div key={`${project.slug}-1-${index}`} className="w-[350px] md:w-[400px] flex-shrink-0">
                     <ProjectCard project={project} />
                 </div>
             ))}
         </ParallaxRow>
-        <ParallaxRow baseVelocity={20}>
+        <ParallaxRow baseVelocity={2} isInView={isInView}>
             {secondRow.map((project, index) => (
                 <div key={`${project.slug}-2-${index}`} className="w-[350px] md:w-[400px] flex-shrink-0">
                     <ProjectCard project={project} />
