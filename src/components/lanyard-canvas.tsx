@@ -116,7 +116,7 @@ function Band() {
       </group >
       <mesh ref={band}>
         <meshLineGeometry />
-        <meshLineMaterial color="#333333" depthTest={false} resolution={[width, height]} lineWidth={5} />
+        <meshLineMaterial color="#333333" depthTest={false} resolution={[width, height]} lineWidth={1} />
       </mesh>
     </>
   )
