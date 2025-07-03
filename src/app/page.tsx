@@ -37,11 +37,14 @@ const TechIcon = ({ children, name }: { children: React.ReactNode; name: string 
 function TimelineEvent({ event, index, total, scrollYProgress }: { event: any, index: number, total: number, scrollYProgress: any }) {
   const [isActive, setIsActive] = useState(false);
 
+  // This motion value will be true when the scroll progress is past the event's start point.
   const itemProgress = useTransform(scrollYProgress, (v) => {
     const start = index / total;
-    return v > start;
+    // A small threshold to make sure the first item is not active at scroll 0
+    return v > start + 0.001;
   });
 
+  // This hook listens for changes in the motion value and updates React state.
   useMotionValueEvent(itemProgress, "change", (latest) => {
     setIsActive(latest);
   });
@@ -60,10 +63,10 @@ function TimelineEvent({ event, index, total, scrollYProgress }: { event: any, i
   };
 
   return (
-    <div className="relative pl-8 sm:pl-12 py-8 group">
+    <div className="relative pl-12 py-4 group">
       <div className="flex items-center mb-1">
         <div className={cn(
-          "bg-background ring-background text-muted-foreground rounded-full h-8 w-8 text-sm font-bold flex items-center justify-center absolute left-[-1rem] transform ring-4 transition-colors duration-300",
+          "bg-secondary ring-background text-muted-foreground rounded-full h-8 w-8 text-sm font-bold flex items-center justify-center absolute left-0 top-4 -translate-x-1/2 transform ring-4 transition-colors duration-500",
           isActive ? 'bg-primary text-primary-foreground' : 'bg-secondary'
         )}>
           {getIcon(event.type)}
@@ -73,7 +76,7 @@ function TimelineEvent({ event, index, total, scrollYProgress }: { event: any, i
       </div>
       <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
       {event.type === 'certification' && event.certificateImage && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-80 p-2 bg-background border rounded-lg shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-10 block group-hover:opacity-100">
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-80 p-2 bg-background border rounded-lg shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none z-20 block group-hover:opacity-100">
           <Image
             src={event.certificateImage}
             alt={`${event.title} certificate`}
@@ -99,13 +102,12 @@ function InteractiveTimelineSection({ events }: { events: any[] }) {
     <div>
       <h3 className="font-headline text-2xl font-semibold mb-8">My Journey</h3>
       <div className="relative h-[450px]">
-        <div className="absolute left-3 top-0 h-full w-px bg-border" />
-        <motion.div
-          className="absolute left-3 top-0 h-full w-px bg-primary"
-          style={{ height: progressLineHeight }}
-        />
         <ScrollArea className="h-full" ref={scrollContainerRef}>
-          <div className="pr-8 relative">
+          <div className="relative ml-4 mr-8 py-24 border-l-2 border-border/50">
+            <motion.div
+              className="absolute left-[-2px] top-0 w-0.5 bg-primary z-10"
+              style={{ height: progressLineHeight }}
+            />
             {events.map((event, index) => (
               <TimelineEvent
                 key={index}
