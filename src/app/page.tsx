@@ -185,7 +185,7 @@ const HeroSection = () => (
 const ProjectsSection = () => <ParallaxProjects />;
 
 const AboutSection = () => (
-  <section id="about" className="h-full w-full flex items-center justify-center py-20 md:py-32">
+  <section id="about" className="h-full w-full flex items-center justify-center py-20 md:py-32 bg-background">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
             <h2 className="font-headline text-4xl md:text-5xl font-bold">About Me</h2>
@@ -237,45 +237,38 @@ const AboutSection = () => (
 
 
 export default function Home() {
-  const mainRef = useRef(null);
+  const scrollRef = useRef(null);
+  
   const { scrollYProgress } = useScroll({
-    target: mainRef,
+    target: scrollRef,
     offset: ['start start', 'end end'],
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.33], [1, 0.8]);
-  const heroOpacity = useTransform(scrollYProgress, [0.3, 0.33], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const heroOpacity = useTransform(scrollYProgress, [0.45, 0.5], [1, 0]);
 
-  const projectsScale = useTransform(scrollYProgress, [0.3, 0.33, 0.63, 0.66], [0.9, 1, 1, 0.9]);
-  const projectsOpacity = useTransform(scrollYProgress, [0.3, 0.33, 0.63, 0.66], [0, 1, 1, 0]);
-
-  const aboutScale = useTransform(scrollYProgress, [0.63, 0.66], [0.9, 1]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66], [0, 1]);
-
+  const projectsScale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+  const projectsOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main ref={mainRef} className="relative h-[300vh]">
-          {/* Hero Section */}
-          <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="h-screen w-full sticky top-0">
-            <HeroSection />
-          </motion.div>
-
-          {/* Projects Section */}
-          <motion.div style={{ scale: projectsScale, opacity: projectsOpacity }} className="h-screen w-full sticky top-0">
-             <ProjectsSection />
-          </motion.div>
+      <main>
+          {/* Container for the zoom animation */}
+          <div ref={scrollRef} className="relative h-[200vh]">
+            <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="h-screen w-full sticky top-0">
+              <HeroSection />
+            </motion.div>
+            <motion.div style={{ scale: projectsScale, opacity: projectsOpacity }} className="h-screen w-full sticky top-0">
+               <ProjectsSection />
+            </motion.div>
+          </div>
           
-          {/* About Section */}
-          <motion.div style={{ scale: aboutScale, opacity: aboutOpacity }} className="h-screen w-full sticky top-0">
-             <AboutSection />
-          </motion.div>
+          {/* Normal document flow */}
+          <AboutSection />
       </main>
       <Footer />
       <Chatbot />
     </div>
   );
 }
-
-    
