@@ -249,8 +249,8 @@ export default function Home() {
   const projectsScale = useTransform(scrollYProgress, [0.3, 0.33, 0.63, 0.66], [0.9, 1, 1, 0.9]);
   const projectsOpacity = useTransform(scrollYProgress, [0.3, 0.33, 0.63, 0.66], [0, 1, 1, 0]);
 
-  const aboutScale = useTransform(scrollYProgress, [0.63, 0.66, 0.97, 1.0], [0.9, 1, 1, 0.8]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66, 0.97, 1.0], [0, 1, 1, 0]);
+  const aboutScale = useTransform(scrollYProgress, [0.63, 0.66], [0.9, 1]);
+  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66], [0, 1]);
 
 
   return (
@@ -277,3 +277,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
