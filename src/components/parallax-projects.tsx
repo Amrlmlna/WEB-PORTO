@@ -94,10 +94,10 @@ export function ParallaxProjects() {
     <section
       id="projects"
       ref={containerRef}
-      className="h-full w-full flex flex-col justify-center items-center bg-secondary/20 overflow-hidden py-4"
+      className="h-full w-full flex flex-col justify-center items-center bg-secondary/20 overflow-hidden"
     >
-      <div className="text-center mb-4">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold">
+      <div className="text-center mb-2">
+        <h2 className="font-headline text-2xl md:text-3xl font-bold">
           Featured Projects
         </h2>
         <p className="mt-2 max-w-2xl mx-auto text-center text-muted-foreground text-sm">

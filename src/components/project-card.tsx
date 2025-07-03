@@ -38,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Card className="flex flex-col h-full overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-accent/50 transition-colors duration-300 group">
-      <div className="relative h-40 w-full overflow-hidden">
+      <div className="relative h-32 w-full overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
@@ -47,17 +47,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
           data-ai-hint={project.imageHint}
         />
       </div>
-      <CardHeader className="py-4 px-4">
-        <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
+      <CardHeader className="p-4">
+        <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow space-y-3 px-4">
+      <CardContent className="flex-grow space-y-2 p-4 pt-0">
         {loading ? (
           <div className="space-y-2">
             <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-3/4" />
+            <Skeleton className="h-4 w-2/3" />
           </div>
         ) : (
-          <p className="text-muted-foreground text-sm">{summary}</p>
+          <p className="text-muted-foreground text-sm leading-snug">{summary}</p>
         )}
         <div className="flex flex-wrap gap-2 pt-1">
           {project.tags.map((tag) => (
@@ -65,7 +65,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       </CardContent>
-      <CardFooter className="px-4 pb-4">
+      <CardFooter className="p-4 pt-0">
         <Link href={`/projects/${project.slug}`} passHref>
           <Button variant="link" className="p-0 h-auto text-accent hover:text-accent/80">
             View Project
