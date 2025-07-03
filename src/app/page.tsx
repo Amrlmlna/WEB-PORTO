@@ -15,6 +15,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { Progress } from '@/components/ui/progress';
 
 const timelineEvents = [
   { type: 'work', year: '2023', title: 'Senior Frontend Engineer at Vision-X', description: 'Leading the development of interactive 3D web experiences for major brands, focusing on performance and user engagement.' },
@@ -23,6 +24,14 @@ const timelineEvents = [
   { type: 'work', year: '2020', title: 'Frontend Developer at Creative Labs', description: 'Developed and maintained responsive user interfaces for various client websites using React and Next.js.' },
   { type: 'certification', year: '2019', title: 'Interaction Design Specialization', description: 'Completed a comprehensive course on UI/UX principles, prototyping, and user-centered design.', certificateImage: 'https://placehold.co/400x300.png', imageHint: 'certificate design' },
   { type: 'education', year: '2018', title: 'B.Sc. in Computer Science', description: 'Graduated with honors, focusing on human-computer interaction and computer graphics.' },
+];
+
+const skills = [
+  { name: 'React & Next.js', level: 95 },
+  { name: 'Three.js & WebGL', level: 90 },
+  { name: 'UI/UX Design (Figma)', level: 85 },
+  { name: 'Node.js & Backend', level: 80 },
+  { name: 'Generative AI & Python', level: 75 },
 ];
 
 const TechIcon = ({ children, name }: { children: React.ReactNode; name: string }) => (
@@ -37,14 +46,11 @@ const TechIcon = ({ children, name }: { children: React.ReactNode; name: string 
 function TimelineEvent({ event, index, total, scrollYProgress }: { event: any, index: number, total: number, scrollYProgress: any }) {
   const [isActive, setIsActive] = useState(false);
 
-  // This motion value will be true when the scroll progress is past the event's start point.
   const itemProgress = useTransform(scrollYProgress, (v) => {
     const start = index / total;
-    // A small threshold to make sure the first item is not active at scroll 0
     return v > start + 0.001;
   });
 
-  // This hook listens for changes in the motion value and updates React state.
   useMotionValueEvent(itemProgress, "change", (latest) => {
     setIsActive(latest);
   });
@@ -124,6 +130,25 @@ function InteractiveTimelineSection({ events }: { events: any[] }) {
   );
 }
 
+function SkillsSection() {
+  return (
+    <div>
+      <h3 className="font-headline text-2xl font-semibold mb-6">My Skillset</h3>
+      <div className="space-y-4">
+        {skills.map((skill) => (
+          <div key={skill.name}>
+            <div className="flex justify-between items-center mb-1">
+              <p className="font-medium text-foreground/90">{skill.name}</p>
+              <p className="text-sm font-mono text-muted-foreground">{skill.level}%</p>
+            </div>
+            <Progress value={skill.level} className="h-2" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -182,6 +207,7 @@ export default function Home() {
               </div>
               <div className="md:col-span-3 space-y-12">
                 <InteractiveTimelineSection events={timelineEvents} />
+                <SkillsSection />
                 <div>
                     <h3 className="font-headline text-2xl font-semibold mb-6">Technologies I Use</h3>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
