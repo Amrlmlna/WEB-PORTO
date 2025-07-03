@@ -91,40 +91,6 @@ const ThreeCanvas = () => {
     rightEarring.position.set(1.05, -0.1, 0);
     character.add(rightEarring);
 
-    // Floating shapes
-    const floatingGroup = new THREE.Group();
-    scene.add(floatingGroup);
-
-    const shapeGeometry1 = new THREE.IcosahedronGeometry(0.15, 0);
-    const shapeGeometry2 = new THREE.TorusKnotGeometry(0.1, 0.03, 100, 16);
-    const shapeMaterial = new THREE.MeshStandardMaterial({
-        color: 0x999999,
-        roughness: 0.4,
-        metalness: 0.8
-    });
-
-    for (let i = 0; i < 15; i++) {
-        const isIcosahedron = Math.random() > 0.5;
-        const shape = new THREE.Mesh(isIcosahedron ? shapeGeometry1 : shapeGeometry2, shapeMaterial);
-
-        shape.position.set(
-            (Math.random() - 0.5) * 5,
-            (Math.random() - 0.5) * 5,
-            (Math.random() - 0.5) * 5
-        );
-
-        shape.rotation.set(
-            Math.random() * Math.PI,
-            Math.random() * Math.PI,
-            Math.random() * Math.PI
-        );
-        
-        const scale = Math.random() * 0.5 + 0.5;
-        shape.scale.set(scale, scale, scale);
-
-        floatingGroup.add(shape);
-    }
-
     const handleMouseMove = (event: MouseEvent) => {
         mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -141,10 +107,6 @@ const ThreeCanvas = () => {
       
       character.rotation.y = THREE.MathUtils.lerp(character.rotation.y, (mouse.current.x * Math.PI) / 10, 0.05);
       character.rotation.x = THREE.MathUtils.lerp(character.rotation.x, (mouse.current.y * Math.PI) / 10, 0.05);
-
-      // Animate floating shapes
-      floatingGroup.rotation.y += 0.001;
-      floatingGroup.rotation.x += 0.0005;
 
       renderer.render(scene, camera);
     };
