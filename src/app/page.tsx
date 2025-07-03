@@ -244,28 +244,34 @@ export default function Home() {
     offset: ['start start', 'end end'],
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
-  const heroOpacity = useTransform(scrollYProgress, [0.45, 0.5], [1, 0]);
+  // Section 1: Hero (0 -> 0.33)
+  const heroScale = useTransform(scrollYProgress, [0, 0.33], [1, 0.8]);
+  const heroOpacity = useTransform(scrollYProgress, [0.30, 0.33], [1, 0]);
 
-  const projectsScale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
-  const projectsOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  // Section 2: Projects (0.33 -> 0.66)
+  const projectsScale = useTransform(scrollYProgress, [0.33, 0.66], [0.8, 1]);
+  const projectsOpacity = useTransform(scrollYProgress, [0.30, 0.33, 0.63, 0.66], [0, 1, 1, 0]);
+
+  // Section 3: About (0.66 -> 1.0)
+  const aboutScale = useTransform(scrollYProgress, [0.66, 1.0], [0.8, 1]);
+  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66], [0, 1]);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main>
-          {/* Container for the zoom animation */}
-          <div ref={scrollRef} className="relative h-[200vh]">
+          <div ref={scrollRef} className="relative h-[300vh]">
             <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="h-screen w-full sticky top-0">
               <HeroSection />
             </motion.div>
             <motion.div style={{ scale: projectsScale, opacity: projectsOpacity }} className="h-screen w-full sticky top-0">
                <ProjectsSection />
             </motion.div>
+            <motion.div style={{ scale: aboutScale, opacity: aboutOpacity }} className="h-screen w-full sticky top-0">
+               <AboutSection />
+            </motion.div>
           </div>
           
-          {/* Normal document flow */}
-          <AboutSection />
       </main>
       <Footer />
       <Chatbot />

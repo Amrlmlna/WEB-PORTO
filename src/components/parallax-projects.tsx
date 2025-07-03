@@ -94,17 +94,17 @@ export function ParallaxProjects() {
     <section
       id="projects"
       ref={containerRef}
-      className="h-full w-full flex flex-col justify-center bg-secondary/20 overflow-hidden"
+      className="h-full w-full flex flex-col justify-center items-center bg-secondary/20 overflow-hidden py-4"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">
+      <div className="text-center mb-4">
+        <h2 className="font-headline text-3xl md:text-4xl font-bold">
           Featured Projects
         </h2>
-        <p className="mt-2 max-w-2xl mx-auto text-center text-muted-foreground">
+        <p className="mt-2 max-w-2xl mx-auto text-center text-muted-foreground text-sm">
           Here are some of the projects I'm most proud of. Each one is a story of challenges, learning, and creation.
         </p>
       </div>
-      <div className="mt-8 flex flex-col gap-4">
+      <div className="flex flex-col gap-2 w-full items-center">
         <ParallaxRow baseVelocity={-2} isInView={isInView}>
             {firstRow.map((project, index) => (
                 <div key={`${project.slug}-1-${index}`} className="w-[350px] md:w-[400px] flex-shrink-0">
