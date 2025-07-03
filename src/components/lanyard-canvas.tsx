@@ -19,14 +19,13 @@ useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e538
 export default function LanyardCanvas() {
   const { debug } = useControls({ debug: false })
   return (
-    <div className="w-full h-full min-h-[400px] md:min-h-[600px]">
+    <div className="absolute inset-y-0 -left-1/4 w-[150%] h-full">
       <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
         <ambientLight intensity={Math.PI} />
         <Physics debug={debug} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
           <Band />
         </Physics>
-        <Environment background blur={0.75}>
-          <color attach="background" args={['black']} />
+        <Environment>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
           <Lightformer intensity={3} color="white" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
           <Lightformer intensity={3} color="white" position={[1, 1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
