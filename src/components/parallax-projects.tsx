@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useState } from "react";
@@ -42,7 +43,6 @@ function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
 
     const timeDelta = t - prevTime.current;
 
-    // Pause animation on hover
     if (isHovering) {
         prevTime.current = t;
         lastScrollY.current = scrollY.get();
@@ -51,12 +51,10 @@ function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
     
     let acceleration = 1;
     if (isInView) {
-        // Calculate scroll velocity only when the component is in view
         const currentScrollY = scrollY.get();
         const scrollDelta = currentScrollY - lastScrollY.current;
         const scrollVelocity = scrollDelta / timeDelta;
         
-        // Apply acceleration based on scroll velocity, capped for control
         acceleration = 1 + Math.min(Math.abs(scrollVelocity) * 0.05, 1);
     }
     
@@ -99,14 +97,14 @@ export function ParallaxProjects() {
       className="h-full w-full flex flex-col justify-center bg-secondary/20 overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="font-headline text-4xl md:text-5xl font-bold text-center">
+        <h2 className="font-headline text-3xl md:text-4xl font-bold text-center">
           Featured Projects
         </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-center text-muted-foreground">
+        <p className="mt-2 max-w-2xl mx-auto text-center text-muted-foreground">
           Here are some of the projects I'm most proud of. Each one is a story of challenges, learning, and creation.
         </p>
       </div>
-      <div className="mt-16 flex flex-col gap-8">
+      <div className="mt-8 flex flex-col gap-4">
         <ParallaxRow baseVelocity={-2} isInView={isInView}>
             {firstRow.map((project, index) => (
                 <div key={`${project.slug}-1-${index}`} className="w-[350px] md:w-[400px] flex-shrink-0">
