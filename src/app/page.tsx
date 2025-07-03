@@ -254,7 +254,7 @@ export default function Home() {
 
   // Section 3: About (0.66 -> 1.0)
   const aboutScale = useTransform(scrollYProgress, [0.66, 1.0], [0.8, 1]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66], [0, 1]);
+  const aboutOpacity = useTransform(scrollYProgress, [0.63, 0.66, 0.97, 1.0], [0, 1, 1, 0]);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
