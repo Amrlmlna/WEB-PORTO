@@ -33,26 +33,26 @@ function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
     damping: 50,
     stiffness: 400
   });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
     clamp: false
   });
 
   const x = useTransform(baseX, (v) => `${wrapRange(-20, -45, v)}%`);
 
-  const directionFactor = useRef(1);
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    let effectiveVelocity = baseVelocity;
 
-    if (velocityFactor.get() !== 0) {
-      directionFactor.current = velocityFactor.get() > 0 ? -1 : 1;
-    }
-    
     if (isInView) {
-        moveBy += directionFactor.current * velocityFactor.get() * 0.5;
+        // Add a bonus to velocity based on scrolling, maintaining the original direction
+        const scrollBonus = Math.sign(baseVelocity) * Math.abs(velocityFactor.get());
+        effectiveVelocity += scrollBonus;
     }
 
+    const moveBy = effectiveVelocity * (delta / 1000);
+    
     baseX.set(baseX.get() + moveBy);
   });
+
 
   return (
     <div className="flex flex-nowrap overflow-hidden">
