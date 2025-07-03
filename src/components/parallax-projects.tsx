@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useScroll,
-  useSpring,
   useTransform,
   useMotionValue,
-  useVelocity,
   useAnimationFrame,
   useInView,
 } from "framer-motion";
@@ -28,32 +26,55 @@ interface ParallaxRowProps {
 function ParallaxRow({ children, baseVelocity, isInView }: ParallaxRowProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400
-  });
-
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 1], {
-    clamp: false
-  });
-
+  const lastScrollY = useRef(0);
+  const [isHovering, setIsHovering] = useState(false);
+  
   const x = useTransform(baseX, (v) => `${wrapRange(-20, -45, v)}%`);
 
-  useAnimationFrame((t, delta) => {
-    let moveBy = baseVelocity * (delta / 1000);
+  const prevTime = useRef<number>(0);
 
-    if (isInView) {
-        const scrollBonus = Math.sign(baseVelocity) * Math.abs(velocityFactor.get());
-        moveBy += scrollBonus * (delta / 1000);
+  useAnimationFrame((t) => {
+    if (!prevTime.current) {
+        prevTime.current = t;
+        lastScrollY.current = scrollY.get();
+        return;
+    }
+
+    const timeDelta = t - prevTime.current;
+
+    // Pause animation on hover
+    if (isHovering) {
+        prevTime.current = t;
+        lastScrollY.current = scrollY.get();
+        return;
     }
     
+    let acceleration = 1;
+    if (isInView) {
+        // Calculate scroll velocity only when the component is in view
+        const currentScrollY = scrollY.get();
+        const scrollDelta = currentScrollY - lastScrollY.current;
+        const scrollVelocity = scrollDelta / timeDelta;
+        
+        // Apply acceleration based on scroll velocity, capped for control
+        acceleration = 1 + Math.min(Math.abs(scrollVelocity) * 2, 1);
+    }
+    
+    let moveBy = baseVelocity * (timeDelta / 1000);
+    moveBy *= acceleration;
+
     baseX.set(baseX.get() + moveBy);
+
+    prevTime.current = t;
+    lastScrollY.current = scrollY.get();
   });
 
-
   return (
-    <div className="flex flex-nowrap overflow-hidden">
+    <div 
+        className="flex flex-nowrap overflow-hidden"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+    >
       <motion.div className="flex gap-8" style={{ x }}>
         {children}
         {children}
