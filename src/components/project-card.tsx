@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { summarizeProjectDescription } from "@/ai/flows/summarize-project-description";
+// import { summarizeProjectDescription } from "@/ai/flows/summarize-project-description";
 import type { Project } from "@/lib/projects";
 import {
   Card,
