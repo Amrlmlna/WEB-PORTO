@@ -8,6 +8,10 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { WebContainerPreview } from "@/components/webcontainer-preview";
+import { ProjectMediaGallery } from "@/components/ProjectMediaGallery";
+import { ProjectAiChatModal } from "@/components/project-ai-chat-modal";
+import React from "react";
+import { ProjectDetailClient } from "@/components/ProjectDetailClient";
 
 type ProjectPageProps = {
   params: {
@@ -60,19 +64,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </div>
 
-            <div className="mt-8 relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover"
-                data-ai-hint={project.imageHint}
-              />
-            </div>
-
-            <article className="mt-12 max-w-none text-foreground/90 leading-relaxed space-y-4">
-              <p>{project.longDescription}</p>
-            </article>
+            <ProjectDetailClient project={project} />
 
             {isWebApp && <WebContainerPreview projectTitle={project.title} />}
 

@@ -34,11 +34,28 @@ import { ProjectAiChatModal } from "@/components/project-ai-chat-modal";
 
 const timelineEvents = [
   {
-    type: "work",
-    year: "2023",
-    title: "Senior Frontend Engineer at Vision-X",
+    type: "certification",
+    year: "2025",
+    title: "CompTIA Cloud Essentials+: Essential Cloud Principles Course",
     description:
-      "Leading the development of interactive 3D web experiences for major brands, focusing on performance and user engagement.",
+      "Successfully completed all course material in the CompTIA Cloud Essentials+: Essential Cloud Principles Course, awarded by Codecademy.",
+    certificateImage: "/serti1.png", // ubah sesuai path yang Anda gunakan
+    imageHint:
+      "certificate design from Codecademy with course title and completion info",
+    longDescription:
+      'This certification, titled "CompTIA Cloud Essentials+: Essential Cloud Principles Course", represents the successful completion of an in-depth foundational course on cloud computing concepts, delivery models, and practical implementations. The course, delivered via Codecademy and instructed by seasoned architect Niranjan Pandey, is designed to equip learners with the knowledge required to understand and navigate the essential principles of cloud computing, while simultaneously preparing them for the CompTIA Cloud Essentials+ (CLO-002) certification exam.\n\nThroughout the course, I was introduced to the fundamentals of cloud technology and its real-world applications across major providers such as AWS and Azure. I gained a clear understanding of how cloud computing enables convenient, on-demand access to a shared pool of configurable computing resources, and how it compares to traditional in-house computing infrastructures in terms of scalability, cost-efficiency, and agility.\n\nThe curriculum covered a variety of prominent computing models including IaaS (Infrastructure as a Service), PaaS (Platform as a Service), and SaaS (Software as a Service), exploring the critical differences and use-case scenarios for each. I learned how to evaluate and select the appropriate service delivery model depending on organizational needs, technical requirements, and security considerations.\n\nKey learning areas included:\n- Disadvantages of In-House Computing: Such as limited scalability, high upfront cost, and maintenance burdens, which contrast with the elastic and cost-effective nature of cloud platforms.\n- Cloud Infrastructure Components: Core elements like compute, storage, network, and virtualization that form the basis of a robust cloud architecture.\n- Virtualization and Shared Resource Pooling: Understanding how virtualization supports multi-tenancy and efficient resource allocation in cloud environments.\n- Lifecycle of Cloud Applications: From development to deployment ("go live"), and the operational practices needed to manage application performance and availability in the cloud.\n- Shared Responsibility Model: A vendor-agnostic approach to security and availability that defines the division of responsibilities between cloud service providers and customers.\n- PaaS Selection and Setup: Critical evaluation criteria for choosing a platform solution, as well as steps involved in deployment and integration into existing workflows.\n- Hands-on Practice with AWS and Azure: Setting up IaaS and PaaS environments to simulate real-world deployment scenarios.\n\nAdditionally, the course explored the broader implications of cloud computing in modern enterprise settings, emphasizing vendor-neutral concepts that apply across platforms. The practical exercises and applied learning reinforced my understanding of how cloud infrastructure can support modern DevOps practices, data-driven decision-making, and secure deployment pipelines.\n\nThe course instructor, Niranjan Pandey, brought over 20 years of industry experience across roles like Java developer, IBM SOA architect, DevOps engineer, and big data solutions expert. His real-world insights into IT security, cloud strategy, and infrastructure planning enriched the learning experience, offering valuable context for theoretical knowledge.\n\nBy completing this course, I have developed a strong conceptual foundation in cloud computing, enabling me to contribute effectively in environments that leverage AWS, Azure, or other cloud platforms. This certification marks not only my theoretical understanding but also hands-on capabilities in deploying cloud solutions aligned with business and operational goals.',
+  },
+  {
+    type: "certification",
+    year: "2025",
+    title: "CompTIA Cloud Essentials+: Essential Cloud Networking Course",
+    description:
+      "Successfully completed all course material in the CompTIA Cloud Essentials+: Essential Cloud Networking Course, awarded by Codecademy.",
+    certificateImage: "/serti2.png", // ubah sesuai path Anda
+    imageHint:
+      "certificate design from Codecademy with cloud networking course title and completion info",
+    longDescription:
+      'This certification, titled "CompTIA Cloud Essentials+: Essential Cloud Networking Course", certifies the successful completion of an intensive training in cloud networking fundamentals as part of the broader CompTIA Cloud Essentials+ (CLO-002) learning path. Delivered by Codecademy and designed by expert instructor Niranjan Pandey, this course explores the foundational and advanced principles behind networking in cloud environments and equips learners with the ability to build, manage, and secure network infrastructure in the cloud.\n\nThe course covers the complete process of migrating from a legacy, on-premise infrastructure to a cloud-native model, emphasizing the technical and architectural shifts involved. I gained a strong understanding of how cloud networking enables organizations to transmit information rapidly, reliably, and securely without having to bear the cost and complexity of managing physical networking infrastructure.\n\nKey topics and learning outcomes include:\n- **Migration to Cloud-Based Networking**: Understanding the steps, challenges, and strategies required to transition from traditional datacenter architectures to scalable cloud networks.\n- **Virtual Private Cloud (VPC)**: In-depth exploration of VPCs, including their components, purposes, and the critical technologies used to isolate VPCs from public cloud segments.\n- **CSP Interface Types**: Analysis of the different interfaces provided by Cloud Service Providers (CSPs) to interact with and manage VPCs.\n- **Demilitarized Zones (DMZ)** in the Cloud: Study of how DMZs are configured in cloud environments, their purpose in securing access, and the techniques used to isolate one DMZ from another.\n- **Firewalls and IDS**: Understanding the architecture and deployment of cloud-native firewalls and intrusion detection systems (IDS), along with their use cases and benefits in securing cloud infrastructure.\n- **Virtual Network Interfaces**: Identification of key attributes of virtual NICs, with practical use cases including attaching multiple network interfaces to cloud instances.\n- **VPN Setup on AWS**: Hands-on experience setting up a Virtual Private Network using AWS, including provisioning EC2 instances within VPC subnets.\n- **Software-Defined Networking (SDN)**: A comprehensive look at how SDN functions in cloud environments, how it differs from traditional networking, and its benefits for dynamic resource allocation and automation.\n- **Domain Name System (DNS) in the Cloud**: Examination of DNS architecture and its role in routing cloud traffic to appropriate applications and services based on availability and region.\n\nThe course emphasized vendor-agnostic principles while providing real-world practice with tools and environments from leading providers such as AWS. It not only reinforced the theoretical knowledge of networking in the cloud but also included hands-on labs that allowed me to simulate secure and scalable networking scenarios.\n\nBy completing this course, I have developed a robust understanding of cloud networking strategies, security architecture, and deployment practices. I can confidently contribute to designing and maintaining enterprise-grade cloud networks that align with organizational goals for performance, security, and scalability. This certification is a significant milestone in my journey toward becoming a cloud infrastructure and networking professional.',
   },
   {
     type: "certification",
@@ -46,8 +63,15 @@ const timelineEvents = [
     title: "Certified Three.js Professional",
     description:
       "Mastered advanced 3D graphics, shaders, and optimization techniques in Three.js.",
-    certificateImage: "https://placehold.co/400x300.png",
-    imageHint: "certificate document",
+    media: [
+      {
+        type: "pdf",
+        src: "/Completion_Certificate_SkillsBuild.pdf",
+        alt: "Three.js Certificate",
+      },
+    ],
+    longDescription:
+      "This certification demonstrates advanced mastery in Three.js, including 3D graphics, custom shaders, performance optimization, and real-world project implementation. The holder has completed rigorous coursework and practical projects, and is recognized for expertise in interactive 3D web development.",
   },
   {
     type: "work",
@@ -64,20 +88,27 @@ const timelineEvents = [
       "Developed and maintained responsive user interfaces for various client websites using React and Next.js.",
   },
   {
-    type: "certification",
-    year: "2019",
-    title: "Interaction Design Specialization",
-    description:
-      "Completed a comprehensive course on UI/UX principles, prototyping, and user-centered design.",
-    certificateImage: "https://placehold.co/400x300.png",
-    imageHint: "certificate design",
-  },
-  {
     type: "education",
     year: "2018",
     title: "B.Sc. in Computer Science",
     description:
       "Graduated with honors, focusing on human-computer interaction and computer graphics.",
+  },
+  {
+    type: "certification",
+    year: "2019",
+    title: "Interaction Design Specialization",
+    description:
+      "Completed a comprehensive course on UI/UX principles, prototyping, and user-centered design.",
+    media: [
+      {
+        type: "pdf",
+        src: "/Completion_Certificate_SkillsBuild3.pdf",
+        alt: "Interaction Design Certificate",
+      },
+    ],
+    longDescription:
+      "This specialization covers the full spectrum of interaction design, including user research, wireframing, prototyping, usability testing, and design thinking. The holder has demonstrated proficiency in creating user-centered digital products and applying best practices in UI/UX design.",
   },
 ];
 
@@ -353,13 +384,31 @@ function TimelineEvent({
                 <DialogTitle>{event.title}</DialogTitle>
                 <DialogDescription>{event.description}</DialogDescription>
               </DialogHeader>
-              {event.certificateImage && (
+              {event.media && event.media[0]?.type === "pdf" ? (
+                <div className="w-full flex flex-col items-center">
+                  <iframe
+                    src={event.media[0].src}
+                    title={event.media[0].alt || event.title}
+                    className="w-full h-[500px] rounded border shadow mb-4"
+                    style={{ minHeight: 400 }}
+                  />
+                  <a
+                    href={event.media[0].src}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-2 rounded-full border-2 border-black text-black font-bold bg-white hover:bg-black hover:text-white transition-all duration-300"
+                  >
+                    Download PDF
+                  </a>
+                </div>
+              ) : event.certificateImage ? (
                 <img
                   src={event.certificateImage}
                   alt={event.title}
                   className="w-full rounded mb-4"
                 />
-              )}
+              ) : null}
             </DialogContent>
           </Dialog>
           <ProjectAiChatModal
@@ -367,10 +416,11 @@ function TimelineEvent({
               slug: event.title.replace(/\s+/g, "-").toLowerCase(),
               title: event.title,
               image:
-                event.certificateImage || "https://placehold.co/400x300.png",
+                event.media && event.media[0]?.type === "pdf"
+                  ? "/pdf-icon.png"
+                  : event.certificateImage || "/serti1.png",
               description: event.description,
-              longDescription:
-                event.description + " (dummy context sertifikat)",
+              longDescription: event.longDescription,
             }}
             open={modalOpen}
             onClose={() => setModalOpen(false)}
@@ -668,7 +718,7 @@ export default function Home() {
           >
             <HeroSection lanyardKey={lanyardKey} sectionRef={heroSectionRef} />
           </motion.div>
-          <div className="h-screen w-full sticky top-0">
+          <div className="w-full">
             <ProjectsSection />
           </div>
         </div>
