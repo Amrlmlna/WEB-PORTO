@@ -31,17 +31,66 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { ProjectAiChatModal } from "@/components/project-ai-chat-modal";
+import React from "react";
 
 const timelineEvents = [
+  {
+    type: "certification",
+    year: "2025",
+    title: "Get Started with Artificial Intelligence | IBM Developer",
+    description:
+      "Successfully completed the 'Get Started with Artificial Intelligence' beginner-level course by IBM Developer on the SkillsBuild platform. This experiential learning activity introduces the core concepts of AI",
+    media: [
+      {
+        type: "pdf",
+        src: "/Completion_Certificate_SkillsBuild1.pdf",
+        alt: "IBM SkillsBuild Artificial Intelligence Certificate",
+      },
+    ],
+    longDescription:
+      "This IBM SkillsBuild course, completed on July 3, 2025, is a foundational learning path designed to help learners understand and apply the basic principles of Artificial Intelligence. Over a total of 1 hour and 43 minutes of guided modules and labs, the program covers:\n\n" +
+      "- The fundamental concepts of artificial intelligence and how it mimics human cognitive functions\n" +
+      "- The differences between supervised, unsupervised, and reinforcement learning paradigms\n" +
+      "- The structure and function of neural networks and how they relate to deep learning\n" +
+      "- Natural Language Processing (NLP) and its applications in real-world AI tasks\n" +
+      "- Step-by-step guidance to build and test a simple machine learning model using Python and the scikit-learn library\n\n" +
+      "This course helped reinforce core technical skills categorized under IBM’s Lightcast Skills Taxonomy, including Artificial Intelligence Skill, Machine Learning Skill, Deep Learning Skill, Natural Language Processing Skill, and Python Programming Language Skill. It is a stepping stone toward more advanced work in AI and ML development, especially for aspiring AI engineers, data scientists, and automation professionals.",
+  },
+  {
+    type: "certification",
+    year: "2025",
+    title: "Use Generative AI for Software Development | IBM SkillsBuild",
+    description:
+      "Completed an IBM SkillsBuild eLearning course focused on the use of Generative AI in software development. Practiced using IBM watsonx to generate, translate, and troubleshoot code through guided simulations and prompt-based interactions.",
+    media: [
+      {
+        type: "pdf",
+        src: "/Completion_Certificate_SkillsBuild2.pdf",
+        alt: "IBM SkillsBuild Generative AI Certificate",
+      },
+    ],
+    longDescription:
+      "This course, completed on July 3, 2025, offers a hands-on exploration of how Generative AI—specifically using IBM watsonx—can support software developers in writing, refactoring, and debugging code. Delivered through the IBM SkillsBuild platform, the 1-hour interactive learning experience emphasizes practical applications of AI-generated code.\n\n" +
+      "Participants gained the ability to:\n" +
+      "- Describe how generative AI is used to produce functional and efficient code\n" +
+      "- Translate code between different programming languages\n" +
+      "- Detect and fix common issues that arise from AI-generated outputs\n" +
+      "- Use IBM watsonx in guided simulations with prompt-driven input to generate new or modified code snippets\n\n" +
+      "This course is part of IBMs AI2026 initiative and categorized under Technical Skills in Artificial Intelligence. It builds foundational knowledge in prompt engineering and prepares learners for future work with AI-assisted development tools.",
+  },
   {
     type: "certification",
     year: "2025",
     title: "CompTIA Cloud Essentials+: Essential Cloud Principles Course",
     description:
       "Successfully completed all course material in the CompTIA Cloud Essentials+: Essential Cloud Principles Course, awarded by Codecademy.",
-    certificateImage: "/serti1.png", // ubah sesuai path yang Anda gunakan
-    imageHint:
-      "certificate design from Codecademy with course title and completion info",
+    media: [
+      {
+        type: "pdf",
+        src: "/CodeCademy2.pdf",
+        alt: "Interaction Design Certificate",
+      },
+    ],
     longDescription:
       'This certification, titled "CompTIA Cloud Essentials+: Essential Cloud Principles Course", represents the successful completion of an in-depth foundational course on cloud computing concepts, delivery models, and practical implementations. The course, delivered via Codecademy and instructed by seasoned architect Niranjan Pandey, is designed to equip learners with the knowledge required to understand and navigate the essential principles of cloud computing, while simultaneously preparing them for the CompTIA Cloud Essentials+ (CLO-002) certification exam.\n\nThroughout the course, I was introduced to the fundamentals of cloud technology and its real-world applications across major providers such as AWS and Azure. I gained a clear understanding of how cloud computing enables convenient, on-demand access to a shared pool of configurable computing resources, and how it compares to traditional in-house computing infrastructures in terms of scalability, cost-efficiency, and agility.\n\nThe curriculum covered a variety of prominent computing models including IaaS (Infrastructure as a Service), PaaS (Platform as a Service), and SaaS (Software as a Service), exploring the critical differences and use-case scenarios for each. I learned how to evaluate and select the appropriate service delivery model depending on organizational needs, technical requirements, and security considerations.\n\nKey learning areas included:\n- Disadvantages of In-House Computing: Such as limited scalability, high upfront cost, and maintenance burdens, which contrast with the elastic and cost-effective nature of cloud platforms.\n- Cloud Infrastructure Components: Core elements like compute, storage, network, and virtualization that form the basis of a robust cloud architecture.\n- Virtualization and Shared Resource Pooling: Understanding how virtualization supports multi-tenancy and efficient resource allocation in cloud environments.\n- Lifecycle of Cloud Applications: From development to deployment ("go live"), and the operational practices needed to manage application performance and availability in the cloud.\n- Shared Responsibility Model: A vendor-agnostic approach to security and availability that defines the division of responsibilities between cloud service providers and customers.\n- PaaS Selection and Setup: Critical evaluation criteria for choosing a platform solution, as well as steps involved in deployment and integration into existing workflows.\n- Hands-on Practice with AWS and Azure: Setting up IaaS and PaaS environments to simulate real-world deployment scenarios.\n\nAdditionally, the course explored the broader implications of cloud computing in modern enterprise settings, emphasizing vendor-neutral concepts that apply across platforms. The practical exercises and applied learning reinforced my understanding of how cloud infrastructure can support modern DevOps practices, data-driven decision-making, and secure deployment pipelines.\n\nThe course instructor, Niranjan Pandey, brought over 20 years of industry experience across roles like Java developer, IBM SOA architect, DevOps engineer, and big data solutions expert. His real-world insights into IT security, cloud strategy, and infrastructure planning enriched the learning experience, offering valuable context for theoretical knowledge.\n\nBy completing this course, I have developed a strong conceptual foundation in cloud computing, enabling me to contribute effectively in environments that leverage AWS, Azure, or other cloud platforms. This certification marks not only my theoretical understanding but also hands-on capabilities in deploying cloud solutions aligned with business and operational goals.',
   },
@@ -51,27 +100,15 @@ const timelineEvents = [
     title: "CompTIA Cloud Essentials+: Essential Cloud Networking Course",
     description:
       "Successfully completed all course material in the CompTIA Cloud Essentials+: Essential Cloud Networking Course, awarded by Codecademy.",
-    certificateImage: "/serti2.png", // ubah sesuai path Anda
-    imageHint:
-      "certificate design from Codecademy with cloud networking course title and completion info",
-    longDescription:
-      'This certification, titled "CompTIA Cloud Essentials+: Essential Cloud Networking Course", certifies the successful completion of an intensive training in cloud networking fundamentals as part of the broader CompTIA Cloud Essentials+ (CLO-002) learning path. Delivered by Codecademy and designed by expert instructor Niranjan Pandey, this course explores the foundational and advanced principles behind networking in cloud environments and equips learners with the ability to build, manage, and secure network infrastructure in the cloud.\n\nThe course covers the complete process of migrating from a legacy, on-premise infrastructure to a cloud-native model, emphasizing the technical and architectural shifts involved. I gained a strong understanding of how cloud networking enables organizations to transmit information rapidly, reliably, and securely without having to bear the cost and complexity of managing physical networking infrastructure.\n\nKey topics and learning outcomes include:\n- **Migration to Cloud-Based Networking**: Understanding the steps, challenges, and strategies required to transition from traditional datacenter architectures to scalable cloud networks.\n- **Virtual Private Cloud (VPC)**: In-depth exploration of VPCs, including their components, purposes, and the critical technologies used to isolate VPCs from public cloud segments.\n- **CSP Interface Types**: Analysis of the different interfaces provided by Cloud Service Providers (CSPs) to interact with and manage VPCs.\n- **Demilitarized Zones (DMZ)** in the Cloud: Study of how DMZs are configured in cloud environments, their purpose in securing access, and the techniques used to isolate one DMZ from another.\n- **Firewalls and IDS**: Understanding the architecture and deployment of cloud-native firewalls and intrusion detection systems (IDS), along with their use cases and benefits in securing cloud infrastructure.\n- **Virtual Network Interfaces**: Identification of key attributes of virtual NICs, with practical use cases including attaching multiple network interfaces to cloud instances.\n- **VPN Setup on AWS**: Hands-on experience setting up a Virtual Private Network using AWS, including provisioning EC2 instances within VPC subnets.\n- **Software-Defined Networking (SDN)**: A comprehensive look at how SDN functions in cloud environments, how it differs from traditional networking, and its benefits for dynamic resource allocation and automation.\n- **Domain Name System (DNS) in the Cloud**: Examination of DNS architecture and its role in routing cloud traffic to appropriate applications and services based on availability and region.\n\nThe course emphasized vendor-agnostic principles while providing real-world practice with tools and environments from leading providers such as AWS. It not only reinforced the theoretical knowledge of networking in the cloud but also included hands-on labs that allowed me to simulate secure and scalable networking scenarios.\n\nBy completing this course, I have developed a robust understanding of cloud networking strategies, security architecture, and deployment practices. I can confidently contribute to designing and maintaining enterprise-grade cloud networks that align with organizational goals for performance, security, and scalability. This certification is a significant milestone in my journey toward becoming a cloud infrastructure and networking professional.',
-  },
-  {
-    type: "certification",
-    year: "2022",
-    title: "Certified Three.js Professional",
-    description:
-      "Mastered advanced 3D graphics, shaders, and optimization techniques in Three.js.",
     media: [
       {
         type: "pdf",
-        src: "/Completion_Certificate_SkillsBuild.pdf",
-        alt: "Three.js Certificate",
+        src: "/CodeCademy1.pdf",
+        alt: "Interaction Design Certificate",
       },
     ],
     longDescription:
-      "This certification demonstrates advanced mastery in Three.js, including 3D graphics, custom shaders, performance optimization, and real-world project implementation. The holder has completed rigorous coursework and practical projects, and is recognized for expertise in interactive 3D web development.",
+      'This certification, titled "CompTIA Cloud Essentials+: Essential Cloud Networking Course", certifies the successful completion of an intensive training in cloud networking fundamentals as part of the broader CompTIA Cloud Essentials+ (CLO-002) learning path. Delivered by Codecademy and designed by expert instructor Niranjan Pandey, this course explores the foundational and advanced principles behind networking in cloud environments and equips learners with the ability to build, manage, and secure network infrastructure in the cloud.\n\nThe course covers the complete process of migrating from a legacy, on-premise infrastructure to a cloud-native model, emphasizing the technical and architectural shifts involved. I gained a strong understanding of how cloud networking enables organizations to transmit information rapidly, reliably, and securely without having to bear the cost and complexity of managing physical networking infrastructure.\n\nKey topics and learning outcomes include:\n- **Migration to Cloud-Based Networking**: Understanding the steps, challenges, and strategies required to transition from traditional datacenter architectures to scalable cloud networks.\n- **Virtual Private Cloud (VPC)**: In-depth exploration of VPCs, including their components, purposes, and the critical technologies used to isolate VPCs from public cloud segments.\n- **CSP Interface Types**: Analysis of the different interfaces provided by Cloud Service Providers (CSPs) to interact with and manage VPCs.\n- **Demilitarized Zones (DMZ)** in the Cloud: Study of how DMZs are configured in cloud environments, their purpose in securing access, and the techniques used to isolate one DMZ from another.\n- **Firewalls and IDS**: Understanding the architecture and deployment of cloud-native firewalls and intrusion detection systems (IDS), along with their use cases and benefits in securing cloud infrastructure.\n- **Virtual Network Interfaces**: Identification of key attributes of virtual NICs, with practical use cases including attaching multiple network interfaces to cloud instances.\n- **VPN Setup on AWS**: Hands-on experience setting up a Virtual Private Network using AWS, including provisioning EC2 instances within VPC subnets.\n- **Software-Defined Networking (SDN)**: A comprehensive look at how SDN functions in cloud environments, how it differs from traditional networking, and its benefits for dynamic resource allocation and automation.\n- **Domain Name System (DNS) in the Cloud**: Examination of DNS architecture and its role in routing cloud traffic to appropriate applications and services based on availability and region.\n\nThe course emphasized vendor-agnostic principles while providing real-world practice with tools and environments from leading providers such as AWS. It not only reinforced the theoretical knowledge of networking in the cloud but also included hands-on labs that allowed me to simulate secure and scalable networking scenarios.\n\nBy completing this course, I have developed a robust understanding of cloud networking strategies, security architecture, and deployment practices. I can confidently contribute to designing and maintaining enterprise-grade cloud networks that align with organizational goals for performance, security, and scalability. This certification is a significant milestone in my journey toward becoming a cloud infrastructure and networking professional.',
   },
   {
     type: "work",
@@ -93,22 +130,6 @@ const timelineEvents = [
     title: "B.Sc. in Computer Science",
     description:
       "Graduated with honors, focusing on human-computer interaction and computer graphics.",
-  },
-  {
-    type: "certification",
-    year: "2019",
-    title: "Interaction Design Specialization",
-    description:
-      "Completed a comprehensive course on UI/UX principles, prototyping, and user-centered design.",
-    media: [
-      {
-        type: "pdf",
-        src: "/Completion_Certificate_SkillsBuild3.pdf",
-        alt: "Interaction Design Certificate",
-      },
-    ],
-    longDescription:
-      "This specialization covers the full spectrum of interaction design, including user research, wireframing, prototyping, usability testing, and design thinking. The holder has demonstrated proficiency in creating user-centered digital products and applying best practices in UI/UX design.",
   },
 ];
 
@@ -294,14 +315,12 @@ function TimelineEvent({
   event,
   index,
   total,
-  scrollYProgress,
   hoverIndex,
   setHoverIndex,
 }: {
   event: any;
   index: number;
   total: number;
-  scrollYProgress: any;
   hoverIndex: number | null;
   setHoverIndex: (i: number | null) => void;
 }) {
@@ -309,15 +328,6 @@ function TimelineEvent({
   const isHovered = hoverIndex === index;
   const [modalOpen, setModalOpen] = useState(false);
   const [certModalOpen, setCertModalOpen] = useState(false);
-
-  const itemProgress = useTransform(scrollYProgress, (v: number) => {
-    const start = index / total;
-    return v > start + 0.001;
-  });
-
-  useMotionValueEvent(itemProgress, "change", (latest) => {
-    setIsActive(latest);
-  });
 
   // Icon style
   const iconBg = isHovered
@@ -456,45 +466,45 @@ function TimelineEvent({
 }
 
 function InteractiveTimelineSection({ events }: { events: any[] }) {
+  const [activeTab, setActiveTab] = useState("work");
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const { scrollYProgress } = useScroll({
-    container: scrollContainerRef,
-  });
-  const progressLineHeight = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "100%"]
-  );
 
-  // Auto-scroll logic
-  const aboutSectionRef = useRef<HTMLDivElement>(null);
-  const isAboutInView = useInView(aboutSectionRef, {
-    margin: "-20% 0px -20% 0px",
-  });
-  const [hasAutoScrolled, setHasAutoScrolled] = useState(false);
-  useEffect(() => {
-    if (isAboutInView && !hasAutoScrolled && scrollContainerRef.current) {
-      setHasAutoScrolled(true);
-      const el = scrollContainerRef.current as HTMLDivElement;
-      // Scroll to bottom
-      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
-      // Scroll back to top after delay
-      setTimeout(() => {
-        el.scrollTo({ top: 0, behavior: "smooth" });
-      }, 1200);
-    }
-  }, [isAboutInView, hasAutoScrolled]);
+  const tabList = [
+    { key: "certification", label: "Certificates" },
+    { key: "work", label: "Career" },
+    { key: "education", label: "Academic" },
+  ];
+
+  const filteredEvents = events.filter((e) => e.type === activeTab);
 
   return (
     <div ref={aboutSectionRef}>
       <h3 className="font-headline text-2xl font-semibold mb-8">My Journey</h3>
+      {/* Tab Navigation */}
+      <div className="flex gap-4 mb-8 justify-center">
+        {tabList.map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className={`px-6 py-2 rounded-full border-2 border-white font-bold text-base shadow transition-all duration-300 ${
+              activeTab === tab.key
+                ? "bg-white text-black"
+                : "bg-black text-white hover:bg-white hover:text-black hover:shadow-[0_0_12px_2px_rgba(255,255,255,0.7)]"
+            }`}
+            style={{ minWidth: 120 }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
       <div className="relative h-[450px]">
         <ScrollArea className="h-full" ref={scrollContainerRef}>
           <div className="relative ml-4 mr-8 py-24">
             {/* Garis progress segmented */}
             <div className="absolute left-[-2px] top-0 w-0.5 h-full z-10 flex flex-col">
-              {events.map((event, idx) => (
+              {filteredEvents.map((event, idx) => (
                 <div
                   key={idx}
                   className={cn(
@@ -506,13 +516,12 @@ function InteractiveTimelineSection({ events }: { events: any[] }) {
                 />
               ))}
             </div>
-            {events.map((event, index) => (
+            {filteredEvents.map((event, index) => (
               <TimelineEvent
                 key={index}
                 event={event}
                 index={index}
-                total={events.length}
-                scrollYProgress={scrollYProgress}
+                total={filteredEvents.length}
                 hoverIndex={hoverIndex}
                 setHoverIndex={setHoverIndex}
               />
