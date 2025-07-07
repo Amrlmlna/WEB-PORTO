@@ -37,6 +37,62 @@ const timelineEvents = [
   {
     type: "certification",
     year: "2025",
+    title: "Meta Full-Stack Developer Specialization",
+    description:
+      "Completed the Meta Full-Stack Developer Specialization via Coursera, mastering both front-end and back-end web development technologies. Built and deployed full web applications using tools such as React, JavaScript, Python, Django, and databases.",
+    media: [
+      {
+        type: "pdf",
+        src: "/Meta-cert.pdf", // ganti path sesuai kebutuhan
+        alt: "Meta Full-Stack Developer Certificate from Coursera",
+      },
+    ],
+    longDescription:
+      "Awarded on July 6, 2025, this professional specialization by Meta (Facebook) and delivered via Coursera comprises 10 in-depth courses covering the entire web development stack. The program provides hands-on, industry-relevant training and projects designed to prepare learners for real-world developer roles.\n\n" +
+      "**Courses included in the specialization:**\n" +
+      "- Introduction to Front-End Development\n" +
+      "- Programming with JavaScript\n" +
+      "- Version Control\n" +
+      "- HTML and CSS in Depth\n" +
+      "- React Basics\n" +
+      "- Advanced React\n" +
+      "- Programming in Python\n" +
+      "- Introduction to Databases for Back-End Development\n" +
+      "- Django Web Framework\n" +
+      "- APIs\n\n" +
+      "Throughout this program, I developed a strong understanding of modern web architecture, built responsive front-end interfaces using React and JavaScript, and constructed scalable backend applications with Python and Django. The final project involved building full-stack web applications from scratch, integrating all components into a functional and professional product.\n\n" +
+      "This certificate demonstrates readiness for entry-level roles such as Full-Stack Web Developer, Front-End Developer, or Back-End Developer, with a strong grasp of both UI/UX and server-side logic.",
+    verifyUrl: "https://www.coursera.org/verify/specialization/CVP7BDVU39F0",
+  },
+  {
+    type: "certification",
+    year: "2025",
+    title: "Google UX Design Professional Certificate",
+    description:
+      "Completed a comprehensive UX Design specialization offered by Google through Coursera. Covered essential skills for user-centered design, from empathy mapping to prototyping, testing, and job readiness for entry-level UX roles.",
+    media: [
+      {
+        type: "pdf",
+        src: "/Google-cert.pdf", // ganti sesuai path aktual
+        alt: "Google UX Design Professional Certificate by Coursera",
+      },
+    ],
+    longDescription:
+      "Awarded on July 4, 2025, this Google UX Design Professional Certificate is part of the Google Career Certificates program delivered via Coursera. The certification includes seven in-depth courses that focus on practical, hands-on learning experiences to prepare learners for real-world UX roles.\n\n" +
+      "The program covers the complete UX design process from beginning to end, including:\n" +
+      "- Foundations of User Experience (UX) Design\n" +
+      "- Empathizing with users and defining user pain points\n" +
+      "- Creating low- and high-fidelity wireframes and prototypes using tools like Figma\n" +
+      "- Conducting UX research and usability testing\n" +
+      "- Building responsive user interfaces for websites\n" +
+      "- Designing user experiences for social good\n" +
+      "- Preparing a UX portfolio and job search strategy using AI tools\n\n" +
+      "This certificate signifies the ability to apply industry-standard UX practices and tools to real-world projects, making the learner job-ready for roles such as UX Designer, UI/UX Researcher, or Interaction Designer.",
+    verifyUrl: "https://www.coursera.org/verify/professional-cert/7AWHMT0HTUSM",
+  },
+  {
+    type: "certification",
+    year: "2025",
     title: "Get Started with Artificial Intelligence | IBM Developer",
     description:
       "Successfully completed the 'Get Started with Artificial Intelligence' beginner-level course by IBM Developer on the SkillsBuild platform. This experiential learning activity introduces the core concepts of AI",
@@ -54,7 +110,7 @@ const timelineEvents = [
       "- The structure and function of neural networks and how they relate to deep learning\n" +
       "- Natural Language Processing (NLP) and its applications in real-world AI tasks\n" +
       "- Step-by-step guidance to build and test a simple machine learning model using Python and the scikit-learn library\n\n" +
-      "This course helped reinforce core technical skills categorized under IBM’s Lightcast Skills Taxonomy, including Artificial Intelligence Skill, Machine Learning Skill, Deep Learning Skill, Natural Language Processing Skill, and Python Programming Language Skill. It is a stepping stone toward more advanced work in AI and ML development, especially for aspiring AI engineers, data scientists, and automation professionals.",
+      "This course helped reinforce core technical skills categorized under IBM's Lightcast Skills Taxonomy, including Artificial Intelligence Skill, Machine Learning Skill, Deep Learning Skill, Natural Language Processing Skill, and Python Programming Language Skill. It is a stepping stone toward more advanced work in AI and ML development, especially for aspiring AI engineers, data scientists, and automation professionals.",
   },
   {
     type: "certification",
@@ -402,15 +458,27 @@ function TimelineEvent({
                     className="w-full h-[500px] rounded border shadow mb-4"
                     style={{ minHeight: 400 }}
                   />
-                  <a
-                    href={event.media[0].src}
-                    download
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-6 py-2 rounded-full border-2 border-black text-black font-bold bg-white hover:bg-black hover:text-white transition-all duration-300"
-                  >
-                    Download PDF
-                  </a>
+                  <div className="flex flex-row gap-3 w-full justify-center">
+                    <a
+                      href={event.media[0].src}
+                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-2 rounded-full border-2 border-black text-black font-bold bg-white hover:bg-black hover:text-white transition-all duration-300"
+                    >
+                      Download PDF
+                    </a>
+                    {event.verifyUrl && (
+                      <a
+                        href={event.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-6 py-2 rounded-full border-2 border-black text-black font-bold bg-white hover:bg-black hover:text-white transition-all duration-300"
+                      >
+                        Verify Certificate
+                      </a>
+                    )}
+                  </div>
                 </div>
               ) : event.certificateImage ? (
                 <img
@@ -466,7 +534,7 @@ function TimelineEvent({
 }
 
 function InteractiveTimelineSection({ events }: { events: any[] }) {
-  const [activeTab, setActiveTab] = useState("work");
+  const [activeTab, setActiveTab] = useState("certification");
   const aboutSectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
